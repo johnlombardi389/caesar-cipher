@@ -1,11 +1,15 @@
 def shift_letters(letter, number)
-    letter_num = letter.ord
-    shifted_letter = letter_num + number
+    if letter.match?(/[a-zA-Z]/) # check if letter is a letter and ignore special characters
+        letter_num = letter.ord
+        shifted_letter = letter_num + number
 
-    if letter.upcase == letter && shifted_letter > 90
-        shifted_letter > 90 ? (shifted_letter - 90 + 64).chr : shifted_letter.chr
+        if letter.upcase == letter && shifted_letter > 90
+            shifted_letter > 90 ? (shifted_letter - 90 + 64).chr : shifted_letter.chr
+        else
+            shifted_letter > 122 ? (shifted_letter - 122 + 96).chr : shifted_letter.chr
+        end
     else
-        shifted_letter > 122 ? (shifted_letter - 122 + 96).chr : shifted_letter.chr
+        letter
     end
 end
 
